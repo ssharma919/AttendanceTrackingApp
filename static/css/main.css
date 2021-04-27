@@ -1,0 +1,19 @@
+body {
+  background-color: #33415e;
+  height: 100%;
+}
+
+div.login-container {
+  background-color: aliceblue;
+  height: 75vh;
+  width: 75vh;
+  border-radius: 5vh;
+}
+
+div.login-title {
+  font-family: "Roboto", sans-serif;
+  color: #33415e;
+  align-self: center;
+  font-size: 5vh;
+  margin-top: 7vh;
+}
