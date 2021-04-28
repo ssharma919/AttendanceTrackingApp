@@ -1,0 +1,29 @@
+body {
+  background-color: #33415e;
+  height: 100%;
+}
+
+div.login-container {
+  background-color: aliceblue;
+  padding: 10vh 7vh 10vh 7vh;
+  border-radius: 5vh;
+}
+
+div.login-title {
+  font-family: "Roboto", sans-serif;
+  color: #33415e;
+  text-align: center;
+  font-size: 5vh;
+}
+
+div.dashboard {
+  background-color: aliceblue;
+  border-radius: 5vh;
+  padding: 35vh 17vh 35vh 17vh;
+}
+
+div.courses {
+  background-color: aliceblue;
+  border-radius: 5vh;
+  padding: 35vh 50vh 35vh 50vh;
+}

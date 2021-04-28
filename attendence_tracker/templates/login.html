@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Attendence Tracker - Login</title>
+{% endblock head %}
+
+{% block body %}
+
+<div id="container" class="d-flex align-items-center justify-content-center" style="height: 100vh;">
+    <div class="login-container">
+
+        <div class="d-flex justify-content-center mb-5">
+            <div class="login-title">Attendence Tracker</div>
+        </div>
+
+        <form method="POST" action="">
+            {{ form.hidden_tag() }}
+            <div class="d-flex justify-content-center mb-5">
+                <div class="btn-group" role="group" aria-label="Role toggle">
+                    <input type="radio" class="btn-check" name="btnradio" id="btnstudent" autocomplete="off"
+                        value="Student" checked>
+                    <label class="btn btn-outline-success" for="btnstudent">Student</label>
+
+                    <input type="radio" class="btn-check" name="btnradio" id="btnteacher" autocomplete="off"
+                        value="Teacher">
+                    <label class="btn btn-outline-success" for="btnteacher">Teacher</label>
+                </div>
+            </div>
+
+            {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+            {% for category, message in messages %}
+            <div class="alert alert-{{ category }}">
+                {{ message }}
+            </div>
+            {% endfor %}
+            {% endif %}
+            {% endwith %}
+
+            <fieldset class="form-group">
+                <div class="form-floating mb-5">
+
+                    {% if form.username.errors %}
+                    {{ form.username(class="form-control is-invalid", placeholder="Username", autocomplete="off") }}
+                    {{ form.username.label() }}
+                    <div class="invalid-feedback">
+                        {% for error in form.username.errors %}
+                        <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                    {% else %}
+                    {{ form.username(class="form-control", placeholder="Username", autocomplete="off", value="") }}
+                    {{ form.username.label() }}
+                    {% endif %}
+
+                </div>
+                <div class="form-floating mb-5">
+                    {% if form.password.errors %}
+                    {{ form.password(class="form-control is-invalid", placeholder="Password", autocomplete="off") }}
+                    {{ form.password.label() }}
+                    <div class="invalid-feedback">
+                        {% for error in form.password.errors %}
+                        <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                    {% else %}
+                    {{ form.password(class="form-control", placeholder="Password", autocomplete="off") }}
+                    {{ form.password.label() }}
+                    {% endif %}
+                </div>
+            </fieldset>
+
+            <div class="d-flex justify-content-center">
+                <div class="form-group">
+                    {{ form.submit(class="btn btn-primary btn-lg", value="Log In") }}
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+{% endblock body %}
