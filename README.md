@@ -6,4 +6,4 @@ A simple attendance tracking app with two user roles, Student and Teacher, that 
 
 ## How to Run
 
-This application is structured as a package in python, so it can either be cloned or imported by the client. Include the _"run.py"_ file, making sure that the file is in a directory with the package, and execute the command `python run.py` in your local terminal. Open the local server to see the application. A list of all users along with their login credentials is available in the _"populate_db.py"_ file within the package.
+This application is structured as a package in python, so it can either be cloned or imported by the client. Include the _"run.py"_ file, making sure that the file is in a directory with the package, and execute the command `python run.py` in your local terminal. Open the local server to see the application. All dependencies should be housed in a virtual environment, but if problems arise, please pip install the necessary imports. A list of all users along with their login credentials is available in the _"populate_db.py"_ file within the package.
