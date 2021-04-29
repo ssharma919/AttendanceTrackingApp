@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Student Dashboard</title>
+{% endblock head %}
+
+{% block body %}
+
+<form method="POST" action="{{ url_for('student_dashboard') }}" id="attendance"></form>
+<form action="{{ url_for('logout') }}" id="logout"></form>
+
+<div class="row">
+    <div class="col-6">
+        <div class="container d-flex justify-content-end align-items-center" style="height: 100vh;">
+            <div class="dashboard">
+                <h3 class="display-4">{{ current_user.name }}</h3>
+                <div class="d-flex justify-content-center">
+                    <h3 class="display-6 mb-5">{{ date().strftime("%B %d, %Y") }}</h3>
+                </div>
+                <div class="d-flex justify-content-center mb-5">
+                    <button type="submit" class="btn btn-lg btn-outline-success" form="attendance">Log
+                        Attendance</button>
+                </div>
+                <div class="d-flex justify-content-center">
+
+                    <button type="submit" class="btn btn-primary" form="logout">Log Out</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-6" style="height: 100vh;">
+        <div class="container d-flex align-items-center" style="height: 100vh;">
+
+            <div class="row row-cols-1 row-cols-md-2 g-4">
+
+                {% for c in current_user.courses %}
+
+                <div class="col">
+                    <div class="card text-dark bg-warning m-3" style="width: 22vh">
+                        <div class="card-header d-flex justify-content-center">
+                            <div class="text">
+                                Course Attendance: {{ min(round(c.student_attendance / ((date() - c.start_date).days) *
+                                100), 100) }}%
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <h3 class="card-title d-flex justify-content-center">
+                                <div class="text" style="font-size: 2.5vh;"> {{ c.name }} </div>
+                            </h3>
+                            <h5 class="card-text d-flex justify-content-center">
+                                <div class="text"> {{ c.teacher.name.split()[-1] }}, {{ c.teacher.name.split()[0] }}
+                                </div>
+                            </h5>
+                        </div>
+                        <div class="card-footer d-flex justify-content-center">
+
+                            {% if c.last_log == date() %}
+                            <div class="text">Attended!</div>
+                            {% else %}
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="flexCheckDefault"
+                                    name="attend_check" value="{{ c.name }}" form="attendance" unchecked>
+                                <label class="form-check-label" for="flexCheckDefault">Attend</label>
+                            </div>
+                            {% endif %}
+
+                        </div>
+                    </div>
+                </div>
+
+                {% endfor %}
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+{% endblock body %}

@@ -10,4 +10,4 @@ db = SQLAlchemy(app)
 bcrypt = Bcrypt(app)
 login_manager = LoginManager(app)
 
-from attendence_tracker import routes
+from attendance_tracker import routes

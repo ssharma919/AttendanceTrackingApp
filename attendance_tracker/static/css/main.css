@@ -19,11 +19,16 @@ div.login-title {
 div.dashboard {
   background-color: aliceblue;
   border-radius: 5vh;
-  padding: 35vh 17vh 35vh 17vh;
+  padding: 15vh 10vh 15vh 10vh;
 }
 
-div.courses {
+div.dashboard-teacher {
   background-color: aliceblue;
   border-radius: 5vh;
-  padding: 35vh 50vh 35vh 50vh;
+  padding: 10vh;
+}
+
+div.text {
+  font-family: "Roboto", sans-serif;
+  font-size: 1.5vh;
 }

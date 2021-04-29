@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Course Breakdown</title>
+{% endblock head %}
+
+{% block body %}
+
+<div id="container" class="d-flex align-items-center justify-content-center" style="height: 100vh;">
+    <div class="login-container">
+
+        <div class="d-flex justify-content-center mb-5">
+            <div class="login-title">{{course_name}}</div>
+        </div>
+        <table class="table mb-5">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Student</th>
+                    <th scope="col">Attendance</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for i, c in course_list %}
+                <tr>
+                    <th scope="row">{{ i + 1 }}</th>
+                    <td>{{ c.student.name }}</td>
+
+                    {% if round(c.student_attendance / ((date() - c.start_date).days) * 100) < 80 %} <td
+                        style="text-align: right; background-color: lightcoral;">
+                        {{ round(c.student_attendance / ((date() - c.start_date).days) * 100) }}%
+                        </td>
+                        {% else %}
+                        <td style="text-align: right;">
+                            {{ min(round(c.student_attendance / ((date() - c.start_date).days) * 100), 100) }}%
+                        </td>
+                        {% endif %}
+
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <div class="d-flex justify-content-center">
+            <form action="{{ url_for('teacher_dashboard') }}">
+                <button type="submit" class="btn btn-small btn-primary">Back to Dashboard</button>
+            </form>
+        </div>
+
+    </div>
+</div>
+
+
+{% endblock body %}
